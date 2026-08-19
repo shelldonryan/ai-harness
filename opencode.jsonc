@@ -19,6 +19,11 @@
         "CONTEXT7_API_KEY": "{env:CONTEXT7_API_KEY}"
       }
     },
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": true
+    },
     "github": {
       "type": "remote",
       "url": "https://api.githubcopilot.com/mcp/",
@@ -34,6 +39,12 @@
   "permission": {
     "edit": "allow",
     "webfetch": "allow",
+    "notion_*": "allow",
+    "notion_notion-create-*": "ask",
+    "notion_notion-update-*": "ask",
+    "notion_notion-move-*": "ask",
+    "notion_notion-duplicate-*": "ask",
+    "notion_notion-convert-*": "ask",
     "bash": {
       "*": "allow",
       "sudo": "ask",
@@ -47,6 +58,7 @@
       "git reset --hard*": "ask",
       "git clean -f*": "ask",
       "git branch -D*": "ask",
+      "git commit*": "ask",
       "git push*": "ask",
       "gh pr create*": "ask",
       "gh release create*": "ask",

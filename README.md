@@ -8,6 +8,7 @@ A portable, version-controlled OpenCode configuration for software development, 
 - Free-model defaults
 - Balanced permissions
 - Context7 documentation tools
+- Connected Notion MCP with approval-gated writes
 - Optional GitHub MCP integration
 - Installation and diagnostic scripts
 - A guided, one-question-at-a-time `grill-me` discovery skill
@@ -34,27 +35,62 @@ A portable, version-controlled OpenCode configuration for software development, 
 | `scripts/doctor.sh` | Checks dependencies, links, and MCP status |
 | `.env.example` | Names optional environment variables without storing secrets |
 
-## Start
+## Quick Start
 
-Read [`docs/architecture.md`](docs/architecture.md) and [`docs/delivery-workflow.md`](docs/delivery-workflow.md), then follow [`docs/setup.md`](docs/setup.md).
+Install or refresh the global symbolic links:
+
+```bash
+./scripts/install.sh
+```
+
+Restart OpenCode, open a project directory, and run:
+
+```bash
+opencode
+```
+
+Use `Tab` to select `delivery-planner` for guided planning, or start directly with a command:
+
+```text
+/product help me define a new product through one-question-at-a-time coaching
+```
+
+Before implementation, run an independent review:
+
+```text
+/delivery-review review the active feature for implementation readiness
+```
+
+Then switch to `build` for approved implementation tasks.
 
 Configuration changes require quitting and restarting OpenCode.
 
-## Planning Commands
+## Documentation
 
-| Command | Purpose |
+| Guide | Purpose |
 | --- | --- |
-| `/backlog` | Review, add, refine, or prioritize backlog outcomes |
-| `/sprint-plan` | Define a sprint goal and conservatively select Ready work |
-| `/sprint-review` | Compare the increment with goal and validation evidence |
-| `/sprint-retro` | Reflect and choose one observable process experiment |
-| `/architecture` | Plan, map, update, or review the smallest useful C4 view set |
-| `/product` | Discover, create, validate, or revise product requirements |
-| `/container-plan` | Plan or review a C4 container technical baseline |
-| `/ux-plan` | Plan or review journeys, flows, states, accessibility, and responsiveness |
-| `/design-system` | Create, extend, or review reusable interface foundations and components |
-| `/prototype` | Plan, build, hand off, or evaluate a purpose-driven prototype |
-| `/delivery-review` | Independently review planning, traceability, or validation evidence |
+| [`docs/user-guide.md`](docs/user-guide.md) | Usage map, working modes, workflows, prompts, artifacts, Notion, Gitflow, and troubleshooting |
+| [`docs/tutorial-study-planner.md`](docs/tutorial-study-planner.md) | Small guided example from product idea through sprint feedback |
+| [`docs/delivery-workflow.md`](docs/delivery-workflow.md) | TLC lifecycle, planning levels, adaptive artifacts, DDD, C4, Scrum, and traceability |
+| [`docs/architecture.md`](docs/architecture.md) | How the harness itself is structured |
+| [`docs/model-strategy.md`](docs/model-strategy.md) | Free-model defaults and provider policy |
+| [`docs/setup.md`](docs/setup.md) | Installation, diagnostics, and MCP authentication |
+
+## Commands
+
+| Command | Agent | Purpose |
+| --- | --- | --- |
+| `/backlog` | `delivery-planner` | Review, add, refine, or prioritize backlog outcomes |
+| `/sprint-plan` | `delivery-planner` | Define a sprint goal and conservatively select Ready work |
+| `/sprint-review` | `delivery-planner` | Compare the increment with goal and validation evidence |
+| `/sprint-retro` | `delivery-planner` | Reflect and choose one observable process experiment |
+| `/architecture` | `delivery-planner` | Plan, map, update, or review the smallest useful C4 view set |
+| `/product` | `delivery-planner` | Discover, create, validate, or revise product requirements |
+| `/container-plan` | `delivery-planner` | Plan or review a C4 container technical baseline |
+| `/ux-plan` | `delivery-planner` | Plan or review journeys, flows, states, accessibility, and responsiveness |
+| `/design-system` | `build` | Create, extend, or review reusable interface foundations and components |
+| `/prototype` | `build` | Plan, build, hand off, or evaluate a purpose-driven prototype |
+| `/delivery-review` | `delivery-reviewer` | Independently review planning, traceability, or validation evidence |
 
 ## Agents
 
