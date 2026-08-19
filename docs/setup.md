@@ -28,6 +28,39 @@ export CONTEXT7_API_KEY="your-key"
 
 Never add the real value to `.env.example` or another tracked file.
 
+## Notion MCP
+
+Notion is enabled as a remote OAuth MCP server:
+
+```json
+"notion": {
+  "type": "remote",
+  "url": "https://mcp.notion.com/mcp",
+  "enabled": true
+}
+```
+
+Check its status with:
+
+```bash
+opencode mcp list
+opencode mcp auth list
+```
+
+Authenticate or replace an expired session with:
+
+```bash
+opencode mcp auth notion
+```
+
+Remove local Notion OAuth credentials with:
+
+```bash
+opencode mcp logout notion
+```
+
+OAuth credentials are managed by OpenCode outside this repository. The harness allows Notion reads and asks for approval before create, update, move, duplicate, or skill-conversion operations.
+
 ## GitHub MCP
 
 The GitHub MCP definition is included but disabled until authentication is configured.
